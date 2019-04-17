@@ -20,9 +20,6 @@ Create by Chanphy on 2019-4-17
 |   |-- index.css
 |   |-- index.js
 |   |-- serviceWorker.js
-|-- DS_Store
-│-- .eslintrc.json
-│-- .gitignore
 │-- package-lock.json
 │-- package.json
 │-- README.md
