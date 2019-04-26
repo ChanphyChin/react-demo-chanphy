@@ -12,7 +12,7 @@ import { testReducers } from './store/reducers';
 import createSagaMiddleware from 'redux-saga';
 import { rootSage } from './sagas';
 // create the saga middleware
-const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware(rootSage);
 // 创建store
 let store = createStore(testReducers, applyMiddleware(sagaMiddleware));
 // then run the saga

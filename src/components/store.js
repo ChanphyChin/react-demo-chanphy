@@ -7,28 +7,33 @@ export class StoreComponent extends Component {
   add = () => {
     console.log(this.props.test);
     let test = this.props.test;
-    this.props.add(test/1 + 1);
-  }
+    this.props.add(test / 1 + 1);
+  };
   render() {
-    return(
+    return (
       <div>
         <div>test in redux is {this.props.test}</div>
+        <div>{this.props.sagaTest}</div>
         <Button onClick={this.add}>add test</Button>
       </div>
     );
   }
 }
 let mapStateToProps = (state, ownProps = {}) => {
-  console.log(state)
+  console.log(state);
   return {
-    test: state.test
-  }
-}
+    test: state.test,
+    sagaTest: state.sagaTest
+  };
+};
 let mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    add: (test) => {
+    add: test => {
       dispatch(addTest(test));
     }
-  }
-}
-export let Store = connect(mapStateToProps, mapDispatchToProps)(StoreComponent);
+  };
+};
+export let Store = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StoreComponent);
