@@ -7,16 +7,25 @@ import * as serviceWorker from './serviceWorker';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 // 引入provider 包含router，以便组件可以访问到store
 import { Provider } from 'react-redux';
-import { store } from './store';
+import { createStore, applyMiddleware } from 'redux';
+import { testReducers } from './store/reducers';
+import createSagaMiddleware from 'redux-saga';
+import { rootSage } from './sagas';
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware();
+// 创建store
+let store = createStore(testReducers, applyMiddleware(sagaMiddleware));
+// then run the saga
+sagaMiddleware.run(rootSage);
 
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
-        <Switch>
-          <Route exact path="/" component={App} />
-          <Route path="/app" component={App} />
-          <Redirect from="*" to="/app" />
-        </Switch>
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route path="/app" component={App} />
+        <Redirect from="*" to="/app" />
+      </Switch>
     </HashRouter>
   </Provider>,
   document.getElementById('root')
