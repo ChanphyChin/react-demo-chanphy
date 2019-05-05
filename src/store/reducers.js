@@ -3,7 +3,7 @@ import { TEST, SAGA_TEST } from './action-types';
 // 初始化state
 const initState = {
   test: '1',
-  sagaTest: 'this is sagaTest default message'
+  sagaTest: []
 };
 // 定义reducer
 export function testReducers(state = initState, action) {

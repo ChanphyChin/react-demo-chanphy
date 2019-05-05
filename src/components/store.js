@@ -13,7 +13,11 @@ export class StoreComponent extends Component {
     return (
       <div>
         <div>test in redux is {this.props.test}</div>
-        <div>{this.props.sagaTest}</div>
+        <div>
+          {this.props.sagaTest.map(item => {
+            return item.name;
+          })}
+        </div>
         <Button onClick={this.add}>add test</Button>
       </div>
     );
