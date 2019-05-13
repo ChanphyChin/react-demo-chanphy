@@ -89,7 +89,8 @@ update 2019.4.26
             yield put({type: SAGA_TEST, sagaTest: result});
         }
     ```
-4. 错误处理
+4. 错误处理  
+
     4.1 `try/catch`进行异常的捕获
     ```javascript
         import Api from './path/to/api'
