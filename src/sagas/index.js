@@ -1,5 +1,5 @@
 import { TEST, SAGA_TEST } from '../store/action-types';
-import { put, all, takeEvery, takeLatest, call } from 'redux-saga/effects';
+import { put, all, takeEvery, select, call } from 'redux-saga/effects';
 import axios from 'axios';
 
 function apiFn(path) {
@@ -16,8 +16,21 @@ function apiFn(path) {
 }
 
 function* incrementAsync() {
-  const result = yield call(apiFn, '/getResult');
-  yield put({ type: SAGA_TEST, sagaTest: result });
+  try {
+    const result = yield call(apiFn, '/getResult');
+    yield put({ type: SAGA_TEST, sagaTest: result || [] });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function* watchAndLog() {
+  yield takeEvery('*', function* logger(action) {
+    const state = yield select();
+
+    console.log('action', action);
+    console.log('state after', state);
+  });
 }
 
 export function* test() {
@@ -26,5 +39,5 @@ export function* test() {
 
 export function* rootSage() {
   console.log('hello saga');
-  yield all([test()]);
+  yield all([test(), watchAndLog()]);
 }
