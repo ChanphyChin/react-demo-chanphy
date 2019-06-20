@@ -35,6 +35,7 @@ Create by Chanphy on 2019-4-17
 1. `action`创建函数用来修改state里的数据，`reducer`用来描述`action`创建函数如何修改`state`的细节
 2. 多个`reducer`可以使用`combineReducers`来合并，合并之后`action`创建函数通过`dispatch`修改`state`依旧流入合并之后的`reducers`,单个`reducer`主要充当功能业务的管理区分，不影响对`action`创建函数的作用。
 
+[react-router](https://reacttraining.com/react-router/web/guides/quick-start)
 ----
 update 2019.4.26
 ### saga 
