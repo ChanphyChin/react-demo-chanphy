@@ -130,6 +130,5 @@ update 2019.4.26
             yield put({ type: 'PRODUCTS_REQUEST_FAILED', error })
         }
     ```
-    
-    5. soga可以做什么？   
+4. soga可以做什么？    
     soga可以检测到某一个（每一个）redux中的state发生变化，从而做出相对应的处理。
