@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './router';
+// import { App } from "./App";
+import 'antd/dist/antd.css';
+import { Home } from './view/home';
+import { Activity } from './view/activity';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 // 引入react-router-dom react-router v4+ 版本抽离出来的浏览器路由管理包
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
@@ -11,6 +15,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { testReducers } from './store/reducers';
 import createSagaMiddleware from 'redux-saga';
 import { rootSage } from './sagas';
+import { UserCenter } from './view/user-center';
+import { Login } from './components/login';
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware(rootSage);
 // 创建store
@@ -22,9 +28,12 @@ ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
       <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/app" component={App} />
-        <Redirect from="*" to="/app" />
+        <Route exact path="/" component={Login} />
+        <Route path="/home" component={Home} />
+        <Route path="/activity" component={Activity} />
+        <Route path="/userCenter" component={UserCenter} />
+        <Route path="/login" component={Login} />
+        <Redirect from="*" to="/home" />
       </Switch>
     </HashRouter>
   </Provider>,

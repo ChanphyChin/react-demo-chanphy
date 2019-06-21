@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
-import { BreadCrumbs } from '../components/common/bread-crumbs';
+import { BreadCrumbs } from '../../components/common/bread-crumbs';
 const { Content } = Layout;
 
 export class Test1 extends Component {
   render() {
     return (
       <Layout style={{ padding: '0 24px 24px' }}>
-        <BreadCrumbs breadCrumbList={['home', 'test1']} />
+        <BreadCrumbs breadCrumbList={['Home', 'Test1']} />
         <Content
           style={{
             background: '#fff',

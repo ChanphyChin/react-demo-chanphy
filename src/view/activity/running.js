@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { BreadCrumbs } from '../components/common/bread-crumbs';
-import { Layout, Breadcrumb } from 'antd';
+import { BreadCrumbs } from '../../components/common/bread-crumbs';
+import { Layout } from 'antd';
 const { Content } = Layout;
 
-export class Test extends Component {
+export class Running extends Component {
   render() {
     return (
       <Layout style={{ padding: '0 24px 24px' }}>
-        <BreadCrumbs breadCrumbList={['home', 'test']} />
+        <BreadCrumbs breadCrumbList={['Home', 'Running']} />
         <Content
           style={{
             background: '#fff',
@@ -16,7 +16,7 @@ export class Test extends Component {
             minHeight: 280
           }}
         >
-          test
+          running
         </Content>
       </Layout>
     );

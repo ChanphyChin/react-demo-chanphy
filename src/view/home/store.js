@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTest } from '../store/actions';
-import { BreadCrumbs } from '../components/common/bread-crumbs';
+import { addTest } from '../../store/actions';
+import { BreadCrumbs } from '../../components/common/bread-crumbs';
 import { Layout, Button } from 'antd';
 const { Content } = Layout;
 
@@ -14,7 +14,7 @@ export class StoreComponent extends Component {
   render() {
     return (
       <Layout style={{ padding: '0 24px 24px' }}>
-        <BreadCrumbs breadCrumbList={['home', 'store']} />
+        <BreadCrumbs breadCrumbList={['Home', 'Store']} />
         <Content
           style={{
             background: '#fff',

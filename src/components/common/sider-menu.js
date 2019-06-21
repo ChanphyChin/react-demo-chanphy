@@ -7,14 +7,18 @@ const { Sider } = Layout;
 export class SiderMenuComponent extends Component {
   state = {
     defaultSelectedKeysTop: ['1'],
-    defaultSelectedKeysSide: ['/app/test']
+    defaultSelectedKeysSide: ['/home/dashboard']
   };
+  static getDerivedStateFromProps(props, state) {
+    return {
+      defaultSelectedKeysSide: [props.location.pathname]
+    };
+  }
   menuChange = e => {
-    console.log(this);
     // 组件内部路由跳转
     this.props.history.push(e.key);
   };
-  componentWillMount() {
+  componentDidMount() {
     let defaultSelectedKeysSide = [];
     // 通过this.props.location取到当前的router信息
     defaultSelectedKeysSide.push(this.props.location.pathname);
@@ -25,24 +29,29 @@ export class SiderMenuComponent extends Component {
       <Sider width={200} style={{ background: '#fff' }}>
         <Menu
           mode="inline"
-          defaultSelectedKeys={this.state.defaultSelectedKeysSide}
+          selectedKeys={this.state.defaultSelectedKeysSide}
           defaultOpenKeys={['sub1']}
           style={{ height: '100%', borderRight: 0 }}
           onSelect={this.menuChange.bind(this)}
         >
-          <SubMenu
-            key="sub1"
-            title={
-              <span>
-                <Icon type="user" />
-                subnav 1
-              </span>
-            }
-          >
-            <Menu.Item key="/app/test">test</Menu.Item>
-            <Menu.Item key="/app/test1">test1</Menu.Item>
-            <Menu.Item key="/app/store">store</Menu.Item>
-          </SubMenu>
+          {this.props.siderList &&
+            this.props.siderList.map(item => {
+              return (
+                <SubMenu
+                  key={item.key}
+                  title={
+                    <span>
+                      <Icon type={item.icon} />
+                      {item.group}
+                    </span>
+                  }
+                >
+                  {item.children.map(child => {
+                    return <Menu.Item key={child.path}>{child.name}</Menu.Item>;
+                  })}
+                </SubMenu>
+              );
+            })}
         </Menu>
       </Sider>
     );
