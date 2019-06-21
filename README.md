@@ -6,15 +6,31 @@ Create by Chanphy on 2019-4-17
 │-- pulic
 │-- src
 |   |-- components  
-│       |-- index.js
-|       |-- store.js
-|       |-- test.1.js
-|       |-- test.js
+│       |-- common
+|           |-- bread-crumbs.js
+|           |-- nav-menu.js
+|           |-- silder-menu.js
+|       |-- login
+|           |-- index.js
 |   |-- store
 |       |-- action-type.js
 |       |-- actions.js
 |       |-- index.js
 |       |-- reducers.js
+|   |-- view
+|       |-- activity
+|           |-- index.js
+|           |-- running.js
+|       |-- home
+|           |-- dashboard.js
+|           |-- index.js
+|           |-- store.js
+|           |-- test1.js
+|       |-- user-center
+|           |-- index.js
+|           |-- setting.js
+|   |-- router
+|       |-- index.js
 |   |-- App.css
 |   |-- App.js
 |   |-- App.test.js
@@ -30,13 +46,13 @@ Create by Chanphy on 2019-4-17
 使用`react`路由，`redux` 结合`ant design` 构建的一个简洁项目模版
 ### 注意事项
  ###### `react-router v4+` 分离出了 `react-router-dom` 供web项目使用，使用方式和`react-router`区别点：
-1. 把`<Route>`组件子路由的嵌套抽离出来，子路由需要在父路由所在组件里面进行管理 [react-router](https://reacttraining.com/react-router/web/guides/quick-start)
+1. 把`<Route>`组件子路由的嵌套抽离出来，~~子路由需要在父路由所在组件里面进行管理~~  
+    路由统一抽离至`/src/router`进行管理。需要再`/src/index.js`进行引入（保证组件成功加载而不是在`router`里面`import`的时候加载），子路由在父级路由进行配置，相当于每个父级路由是每个子路由的展示入口。
+ [react-router文档参考](https://reacttraining.com/react-router/web/guides/quick-start)
  ###### `redux`注意点： 
 1. `action`创建函数用来修改state里的数据，`reducer`用来描述`action`创建函数如何修改`state`的细节
 2. 多个`reducer`可以使用`combineReducers`来合并，合并之后`action`创建函数通过`dispatch`修改`state`依旧流入合并之后的`reducers`,单个`reducer`主要充当功能业务的管理区分，不影响对`action`创建函数的作用。
 
-----
-update 2019.4.26
 ### saga 
 1. 定义：`redux`本身是无副作用（不做数据更改，逻辑处理），`redux-saga`为拓展`redux`能力而存在的插件，例如在`redux`里面发起异步请求。
 2. 几个`redux-saga/effects`的函数
@@ -130,5 +146,5 @@ update 2019.4.26
             yield put({ type: 'PRODUCTS_REQUEST_FAILED', error })
         }
     ```
-4. soga可以做什么？    
+5. soga到底可以做什么？    
     soga可以检测到某一个（每一个）redux中的state发生变化，从而做出相对应的处理。
