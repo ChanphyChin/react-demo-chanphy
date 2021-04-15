@@ -1,43 +1,37 @@
-import { TEST, SAGA_TEST } from '../store/action-types';
-import { put, all, takeEvery, select, call } from 'redux-saga/effects';
-import axios from 'axios';
+import {
+  CLICK_COUNT,
+  SOME_THING_FORM_AJAX,
+  SOME_THING_FORM_AJAX_PARAMS
+} from '../store/action-types';
+import { put, all, takeEvery, select, call, take } from 'redux-saga/effects';
 
-function apiFn(path) {
+function apiFn(params) {
+  console.log(params);
   return new Promise((resolve, reject) => {
-    axios
-      .get(path)
-      .then(res => {
-        resolve(res.data.result);
-      })
-      .catch(err => {
-        reject(err);
-      });
+    setTimeout(function() {
+      resolve({ page: 1, pageSize: 10, list: [] });
+    }, 2000);
   });
 }
 
-function* incrementAsync() {
-  try {
-    const result = yield call(apiFn, '/getResult');
-    yield put({ type: SAGA_TEST, sagaTest: result || [] });
-  } catch (error) {
-    console.log(error);
-  }
+const buttonClickCallback = () => {
+  console.log('after button click');
+};
+
+export function* buttonClick() {
+  yield take(CLICK_COUNT, buttonClickCallback);
 }
 
-function* watchAndLog() {
-  yield takeEvery('*', function* logger(action) {
-    const state = yield select();
-
-    console.log('action', action);
-    console.log('state after', state);
-  });
+export function* getSomeThingFromAjax() {
+  const state = yield select();
+  const data = yield call(apiFn, state.ajaxPaams);
+  yield put({ type: SOME_THING_FORM_AJAX, ajaxData: data });
 }
 
-export function* test() {
-  yield takeEvery(TEST, incrementAsync);
+export function* setAjaxParams() {
+  yield takeEvery(SOME_THING_FORM_AJAX_PARAMS, getSomeThingFromAjax);
 }
 
 export function* rootSage() {
-  console.log('hello saga');
-  yield all([test(), watchAndLog()]);
+  yield all([buttonClick(), setAjaxParams()]);
 }

@@ -1,17 +1,24 @@
-import { combineReducers } from 'redux';
-import { TEST, SAGA_TEST } from './action-types';
+// import { combineReducers } from 'redux';
+import {
+  CLICK_COUNT,
+  SOME_THING_FORM_AJAX,
+  SOME_THING_FORM_AJAX_PARAMS
+} from './action-types';
 // 初始化state
 const initState = {
-  test: '1',
-  sagaTest: []
+  count: '1',
+  ajaxData: {},
+  ajaxParams: {}
 };
 // 定义reducer
-export function testReducers(state = initState, action) {
+export function reducersDemo(state = initState, action) {
   switch (action.type) {
-    case TEST:
-      return Object.assign({}, state, { test: action.test });
-    case SAGA_TEST:
-      return Object.assign({}, state, { sagaTest: action.sagaTest });
+    case CLICK_COUNT:
+      return Object.assign({}, state, { count: action.count });
+    case SOME_THING_FORM_AJAX:
+      return Object.assign({}, state, { ajaxData: action.ajaxData });
+    case SOME_THING_FORM_AJAX_PARAMS:
+      return Object.assign({}, state, { ajaxParams: action.ajaxParams });
     default:
       return state;
   }

@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTest } from '../../store/actions';
+import { onButtonClick } from '../../store/actions';
 import { BreadCrumbs } from '../../components/common/bread-crumbs';
 import { Layout, Button } from 'antd';
 const { Content } = Layout;
 
 export class StoreComponent extends Component {
   add = () => {
-    console.log(this.props.test);
-    let test = this.props.test;
-    this.props.add(test / 1 + 1);
+    console.log(this.props.count);
+    let count = this.props.count;
+    this.props.add(count / 1 + 1);
   };
   render() {
+    const { count } = this.props;
     return (
       <Layout style={{ padding: '0 24px 24px' }}>
         <BreadCrumbs breadCrumbList={['Home', 'Store']} />
@@ -24,13 +25,8 @@ export class StoreComponent extends Component {
           }}
         >
           <div>
-            <div>test in redux is {this.props.test}</div>
-            <div>
-              {this.props.sagaTest.map(item => {
-                return item.name;
-              })}
-            </div>
-            <Button onClick={this.add}>add test</Button>
+            <div>button click count in redux is {this.props.count}</div>
+            <Button onClick={this.add}>add count</Button>
           </div>
         </Content>
       </Layout>
@@ -40,18 +36,15 @@ export class StoreComponent extends Component {
 let mapStateToProps = (state, ownProps = {}) => {
   console.log(state);
   return {
-    test: state.test,
-    sagaTest: state.sagaTest
+    count: state.count,
+    ajaxData: state.ajaxData
   };
 };
 let mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    add: test => {
-      dispatch(addTest(test));
+    add: count => {
+      dispatch(onButtonClick(count));
     }
   };
 };
-export let Store = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(StoreComponent);
+export let Store = connect(mapStateToProps, mapDispatchToProps)(StoreComponent);

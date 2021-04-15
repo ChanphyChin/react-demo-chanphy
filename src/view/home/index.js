@@ -22,10 +22,6 @@ export class Home extends Component {
             path: '/home/dashboard'
           },
           {
-            name: 'test1',
-            path: '/home/test1'
-          },
-          {
             name: 'store',
             path: '/home/store'
           }
@@ -60,5 +56,4 @@ export class Home extends Component {
 }
 
 export { Dashboard } from './dashboard';
-export { Test1 } from './test.1';
 export { Store } from './store';

@@ -1,3 +1,4 @@
 // 定义action类型
-export let TEST = 'TEST';
-export let SAGA_TEST = 'SAGA_TEST';
+export let CLICK_COUNT = 'CLICK_COUNT';
+export let SOME_THING_FORM_AJAX = 'SOME_THING_FORM_AJAX';
+export let SOME_THING_FORM_AJAX_PARAMS = 'SOME_THING_FORM_AJAX_PARAMS';

@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './router';
-// import { App } from "./App";
 import 'antd/dist/antd.css';
 import { Home } from './view/home';
 import { Activity } from './view/activity';
@@ -12,15 +11,16 @@ import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 // 引入provider 包含router，以便组件可以访问到store
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { testReducers } from './store/reducers';
+import { reducersDemo } from './store/reducers';
 import createSagaMiddleware from 'redux-saga';
 import { rootSage } from './sagas';
 import { UserCenter } from './view/user-center';
 import { Login } from './components/login';
+import logger from 'redux-logger';
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware(rootSage);
 // 创建store
-let store = createStore(testReducers, applyMiddleware(sagaMiddleware));
+let store = createStore(reducersDemo, applyMiddleware(sagaMiddleware, logger));
 // then run the saga
 sagaMiddleware.run(rootSage);
 

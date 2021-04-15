@@ -1,4 +1,4 @@
-import { Home, Dashboard, Test1, Store } from '../view/home/index';
+import { Home, Dashboard, Store } from '../view/home/index';
 import { Activity, Running } from '../view/activity/index';
 import { UserCenter, UserSetting } from '../view/user-center';
 
@@ -10,10 +10,6 @@ export default {
       {
         path: '/home/dashboard',
         component: Dashboard
-      },
-      {
-        path: '/home/test1',
-        component: Test1
       },
       {
         path: '/home/store',
