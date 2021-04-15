@@ -25,7 +25,7 @@ export class StoreComponent extends Component {
           }}
         >
           <div>
-            <div>button click count in redux is {this.props.count}</div>
+            <div>button click count in redux is {count}</div>
             <Button onClick={this.add}>add count</Button>
           </div>
         </Content>

@@ -25,7 +25,6 @@ Create by Chanphy on 2019-4-17
 |           |-- dashboard.js
 |           |-- index.js
 |           |-- store.js
-|           |-- test1.js
 |       |-- user-center
 |           |-- index.js
 |           |-- setting.js

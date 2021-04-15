@@ -6,7 +6,6 @@ import {
 import { put, all, takeEvery, select, call, take } from 'redux-saga/effects';
 
 function apiFn(params) {
-  console.log(params);
   return new Promise((resolve, reject) => {
     setTimeout(function() {
       resolve({ page: 1, pageSize: 10, list: [] });
