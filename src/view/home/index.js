@@ -24,6 +24,10 @@ export class Home extends Component {
           {
             name: 'store',
             path: '/home/store'
+          },
+          {
+            name: 'hooks',
+            path: '/home/hooks'
           }
         ]
       }
@@ -57,3 +61,4 @@ export class Home extends Component {
 
 export { Dashboard } from './dashboard';
 export { Store } from './store';
+export { Hooks } from './hooks';

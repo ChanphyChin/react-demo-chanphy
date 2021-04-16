@@ -8,7 +8,7 @@ import { put, all, takeEvery, select, call, take } from 'redux-saga/effects';
 function apiFn(params) {
   return new Promise((resolve, reject) => {
     setTimeout(function() {
-      resolve({ page: 1, pageSize: 10, list: [] });
+      resolve({ page: 1, pageSize: 10, list: [], params });
     }, 2000);
   });
 }
@@ -23,7 +23,7 @@ export function* buttonClick() {
 
 export function* getSomeThingFromAjax() {
   const state = yield select();
-  const data = yield call(apiFn, state.ajaxPaams);
+  const data = yield call(apiFn, state.ajaxParams);
   yield put({ type: SOME_THING_FORM_AJAX, ajaxData: data });
 }
 
