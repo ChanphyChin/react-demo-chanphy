@@ -25,6 +25,8 @@ Create by Chanphy on 2019-4-17
 |           |-- dashboard.js
 |           |-- index.js
 |           |-- store.js
+|           |-- hooks.js
+|           |-- hooks-modal.js
 |       |-- user-center
 |           |-- index.js
 |           |-- setting.js
