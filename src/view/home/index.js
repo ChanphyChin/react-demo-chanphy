@@ -34,6 +34,7 @@ export class Home extends Component {
     ]
   };
   render() {
+    const routesConfig = routes.find(item => item.name === 'home');
     return (
       <Layout>
         <NavMenu navList={this.state.navList} />
@@ -41,7 +42,7 @@ export class Home extends Component {
           <SiderMenu siderList={this.state.siderList} />
           {/*子路由的定义 react-router-dom 把父子组件的嵌套更改成在父组件里面进行管理*/}
           <Switch>
-            {routes.home.children.map(item => {
+            {routesConfig.children.map(item => {
               return (
                 <Route
                   exact

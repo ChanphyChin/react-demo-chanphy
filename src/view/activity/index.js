@@ -26,6 +26,7 @@ export class Activity extends Component {
     ]
   };
   render() {
+    const routesConfig = routes.find(item => item.name === 'activity');
     return (
       <Layout>
         <NavMenu
@@ -38,7 +39,7 @@ export class Activity extends Component {
           <SiderMenu siderList={this.state.siderList} />
           {/*子路由的定义 react-router-dom 把父子组件的嵌套更改成在父组件里面进行管理*/}
           <Switch>
-            {routes.activity.children.map(item => {
+            {routesConfig.children.map(item => {
               return (
                 <Route
                   exact

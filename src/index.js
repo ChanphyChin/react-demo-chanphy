@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './router';
+import routes from './router';
 import 'antd/dist/antd.css';
 import { Home } from './view/home';
 import { Activity } from './view/activity';
@@ -17,6 +17,7 @@ import { rootSage } from './sagas';
 import { UserCenter } from './view/user-center';
 import { Login } from './components/login';
 import logger from 'redux-logger';
+import { RouterGuarder } from './router/router-guarder';
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware(rootSage);
 // 创建store
@@ -28,12 +29,13 @@ ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
       <Switch>
-        <Route exact path="/" component={Login} />
+        {/* <Route exact path="/" component={Login} />
         <Route path="/home" component={Home} />
         <Route path="/activity" component={Activity} />
         <Route path="/userCenter" component={UserCenter} />
         <Route path="/login" component={Login} />
-        <Redirect from="*" to="/home" />
+        <Redirect from="*" to="/home" /> */}
+        <RouterGuarder config={routes} />
       </Switch>
     </HashRouter>
   </Provider>,
