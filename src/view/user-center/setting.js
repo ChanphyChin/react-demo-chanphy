@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Breadcrumb } from 'antd';
+import { Layout } from 'antd';
 import { BreadCrumbs } from '../../components/common/bread-crumbs';
 const { Content } = Layout;
 

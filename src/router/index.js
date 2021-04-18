@@ -1,6 +1,6 @@
 import { Home, Dashboard, Store, Hooks } from '../view/home/index';
 import { Activity, Running } from '../view/activity/index';
-import { UserCenter, UserSetting } from '../view/user-center';
+import { UserCenter } from '../view/user-center';
 
 export default [
   {
@@ -47,14 +47,14 @@ export default [
     path: '/userCenter',
     component: UserCenter,
     name: 'userCenter',
-    children: [
-      {
-        path: '/userCenter/setting',
-        component: UserSetting,
-        name: 'setting',
-        auth: true
-      }
-    ],
+    // children: [
+    //   {
+    //     path: '/userCenter/setting',
+    //     component: UserSetting,
+    //     name: 'setting',
+    //     auth: true
+    //   }
+    // ],
     auth: true
   }
 ];

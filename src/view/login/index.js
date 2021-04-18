@@ -6,8 +6,8 @@ class NormalLoginForm extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        sessionStorage.setItem('isLogin', true);
         this.props.history.push('/home');
-        console.log('Received values of form: ', values);
       }
     });
   };

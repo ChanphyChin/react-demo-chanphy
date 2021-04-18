@@ -31,6 +31,7 @@ class NavMenuComponent extends Component {
         title: 'Do you want to logout?',
         content: '',
         onOk: () => {
+          sessionStorage.removeItem('isLogin');
           this.props.history.push(e.key);
         },
         onCancel: () => {}
@@ -42,7 +43,7 @@ class NavMenuComponent extends Component {
   render() {
     const menu = (
       <Menu onClick={this.handleMenuClick}>
-        <Menu.Item key="/userCenter/setting">
+        <Menu.Item key="/userCenter">
           <Icon type="setting" />
           User Center
         </Menu.Item>
