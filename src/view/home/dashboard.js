@@ -3,10 +3,13 @@ import { BreadCrumbs } from '../../components/common/bread-crumbs';
 import { Layout, Button } from 'antd';
 import { connect } from 'react-redux';
 import { SOME_THING_FORM_AJAX_PARAMS } from '../../store/action-types';
+import { getLang } from '../../language/get-lang';
+
 const { Content } = Layout;
 
 class Page extends Component {
   render() {
+    const language = getLang();
     const { setAjaxParams, ajaxData } = this.props;
     return (
       <Layout style={{ padding: '0 24px 24px' }}>
@@ -20,7 +23,7 @@ class Page extends Component {
           }}
         >
           <Button onClick={() => setAjaxParams({ id: 1 })}>
-            get ajax data
+            {language.home.dashboard.getData}
           </Button>
           <div>data is {JSON.stringify(ajaxData)}</div>
         </Content>
